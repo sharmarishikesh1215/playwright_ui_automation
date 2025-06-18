@@ -17,7 +17,7 @@ async function sendSlackWebhookMessage(message: string) {
       { headers: { "Content-Type": "application/json" } }
     );
     if (response.status !== 200) {
-      console.error("Slack webhook error:", response.data);
+      console.error("Slack webhook backend error:", response.data);
     }
   } catch (err) {
     console.error("Slack webhook send failed:", err);
