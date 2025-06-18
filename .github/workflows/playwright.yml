@@ -2,10 +2,7 @@ name: Playwright Tests Morning & Evening (Mon-Fri)
 
 on:
   schedule:
-    # 10:00 AM UTC Monday-Friday
-    - cron: "0 10 * * 1-5"
-    # 2:10 PM UTC Monday-Friday
-    - cron: "10 14 * * 1-5"
+    - cron: "45 8 * * 1-5"
   workflow_dispatch:
 
 jobs:
