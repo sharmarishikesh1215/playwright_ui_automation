@@ -2,7 +2,7 @@ name: Playwright Tests Morning & Evening (Mon-Fri)
 
 on:
   schedule:
-    - cron: "0 9 * * 1-5"  # Runs at 9 AM UTC, Monday to Friday
+    - cron: "30 9 * * 1-5"
   workflow_dispatch:
 
 jobs:
