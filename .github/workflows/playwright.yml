@@ -1,13 +1,15 @@
-name: Playwright Tests Morning & Evening (Mon-Fri)
+name: Playwright Tests
 
 on:
-  schedule:
-    - cron: "30 9 * * 1-5"
+  push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -15,4 +17,4 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npx playwright install --with-deps
-      - run: npx playwright test --project=chromium
+      - run: npx playwright test --project=chromium --headed
