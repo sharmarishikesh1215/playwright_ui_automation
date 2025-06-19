@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import axios from "axios";
 import "dotenv/config";
 
-const SLACK_CHANNEL = "all-petstore"; // e.g., C12345678
+const SLACK_CHANNEL = "social"; // e.g., C12345678
 const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 /**
  * In GitHub Actions, secrets are injected as environment variables.
