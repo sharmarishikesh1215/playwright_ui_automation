@@ -3,8 +3,16 @@ import axios from "axios";
 import "dotenv/config";
 
 const SLACK_CHANNEL = "all-petstore"; // e.g., C12345678
-const SLACK_WEBHOOK_URL =process.env.SLACK_WEBHOOK_URL;
-
+const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
+/**
+ * In GitHub Actions, secrets are injected as environment variables.
+ * No code change is needed here to access SLACK_WEBHOOK_URL,
+ * as process.env.SLACK_WEBHOOK_URL will be set by the workflow.
+ * Just ensure your GitHub Actions workflow sets the secret:
+ * 
+ *    env:
+ *      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+ */
 
 async function sendSlackWebhookMessage(message: string) {
   if (!SLACK_WEBHOOK_URL) {
