@@ -1,15 +1,16 @@
 import { test, expect } from "@playwright/test";
 import axios from "axios";
-import * as fs from "fs";
-import FormData from "form-data";
-
+import "dotenv/config";
 
 const SLACK_CHANNEL = "all-petstore"; // e.g., C12345678
-const SLACK_WEBHOOK_URL =
-  "https://hooks.slack.com/services/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";
+const SLACK_WEBHOOK_URL =process.env.SLACK_WEBHOOK_URL;
 
 
 async function sendSlackWebhookMessage(message: string) {
+  if (!SLACK_WEBHOOK_URL) {
+    console.error("SLACK_WEBHOOK_URL is not defined.");
+    return;
+  }
   try {
     const response = await axios.post(
       SLACK_WEBHOOK_URL,
